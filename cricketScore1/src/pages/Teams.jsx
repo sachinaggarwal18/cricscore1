@@ -1,10 +1,11 @@
+import Layout from "./Layout"
 
 
 const Teams = () => {
     return (
-      <div>
-        
-      </div>
+      <Layout>
+          
+      </Layout>
     )
   }
   

@@ -1,92 +1,102 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { scorecardData } from "../data/scorecardData";
 
 const Scorecard = () => {
   const settings = {
     dots: true,
     infinite: true,
-    // fade: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
   };
 
-  const scorecardData = [
-    {
-      id: 1,
-      team1: "India",
-      score1: "386/6 (50 overs)",
-      team2: "Australia",
-      score2: "300/10 (48.5 overs)",
-      result: "India win by 86 runs",
-    },
-    {
-      id: 2,
-      team1: "Bangladesh",
-      score1: "178/6 (20 overs)",
-      team2: "Zimbabwe",
-      score2: "123/10 (20 overs)",
-      result: "Bangladesh win by 45 runs",
-    },
-    {
-      id: 3,
-      team1: "Pakistan",
-      score1: "287/9 (50 overs)",
-      team2: "Afghanistan",
-      score2: "288/4 (48 overs)",
-      result: "Afghanistan win by 6 wickets",
-    },
-    {
-      id: 4,
-      team1: "England",
-      score1: "298/7 (50 overs)",
-      team2: "South Africa",
-      score2: "299/6 (49.2 overs)",
-      result: "South Africa win by 4 wickets",
-    },
-  ];
+  const countryCodes = {
+    India: "in",
+    Australia: "au",
+    Bangladesh: "bd",
+    Zimbabwe: "zw",
+    Pakistan: "pk",
+    Afghanistan: "af",
+    England: "gb",
+    "South Africa": "za",
+  };
 
   return (
-    <div className="mt-15 ">
-      <h2 className="text-3xl font-bold text-center mb-6">Live Scores</h2>
-      <div className="m-8 p-6 bg-green-300 bg-opacity-80 border rounded-lg shadow-lg">
+    <div className="relative text-center">
+      {/* Section Title with Curved Stroke */}
+      <h2 className="text-4xl font-bold relative mb-12">
+        Ongoing Matches
+        <svg
+          className="absolute  left-1/2 -translate-x-1/2"
+          xmlns="http://www.w3.org/2000/svg"
+          width="200"
+          height="20"
+          viewBox="0 0 200 20"
+          fill="none"
+        >
+          <path
+            d="M10 15 Q100 0 190 15"
+            stroke="teal"
+            strokeWidth="4"
+            fill= "none"
+          />
+        </svg>
+      </h2>
+
+      {/* Scorecard Slider */}
+      <div className="m-8 mt-6 p-6 border border-teal-500 bg-opacity-80 rounded-lg shadow-lg">
         <Slider {...settings}>
           {scorecardData.map((match) => (
             <div key={match.id} className="p-4">
-              <h3 className="text-xl font-bold mb-4">
-                {match.team1} vs {match.team2}
+              
+              {/* Match Title */}
+              <h3 className="p-2 text-2xl font-bold mb-4">
+                {match.team1.toUpperCase()} vs {match.team2.toUpperCase()}
               </h3>
-              <div className="mb-2 p-1 flex items-center gap-2">
-                <div>
+
+              {/* Team 1 and Team 2 Scores */}
+              <div className="mb-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                {/* Team 1 Score */}
+                <div className="flex items-center gap-2">
                   <img
-                    className="w-6 h-4 rounded"
-                    src={`https://countryflagsapi.com/png/${match.team1.toLowerCase()}`}
+                    className="w-8 h-6 rounded"
+                    src={`https://flagcdn.com/w320/${countryCodes[match.team1].toLowerCase()}.png`}
                     alt={`${match.team1} flag`}
+                    onError={(e) => (e.target.style.display = "none")}
                   />
+                  <div className="font-semibold text-center sm:text-left">
+                    <span className="p-1 text-teal-600 text-lg font-semibold">
+                      {match.team1}:
+                    </span>
+                    {match.score1}
+                  </div>
                 </div>
-                <div className="font-semibold">
-                  <span className="font-semibold">{match.team1}:</span>{" "}
-                  {match.score1}
-                </div>
-              </div>
-              <div className="mb-2 p-1 flex items-center gap-2">
-                <div>
+
+                {/* Team 2 Score */}
+                <div className="flex items-center gap-2">
                   <img
-                    className="w-6 h-4 rounded"
-                    src={`https://countryflagsapi.com/png/${match.team2.toLowerCase()}`}
+                    className="w-8 h-6 rounded"
+                    src={`https://flagcdn.com/w320/${countryCodes[match.team2].toLowerCase()}.png`}
                     alt={`${match.team2} flag`}
+                    onError={(e) => (e.target.style.display = "none")}
                   />
-                </div>
-                <div className="font-semibold">
-                  <span className="font-semibold">{match.team2}:</span>{" "}
-                  {match.score2}
+                  <div className="font-semibold text-center sm:text-left">
+                    <span className="p-1 text-teal-600 text-lg font-semibold">
+                      {match.team2}:
+                    </span>
+                    {match.score2}
+                  </div>
                 </div>
               </div>
+
+              {/* Match Result */}
               <p className="font-bold">
-                Result: <span className="font-semibold">{match.result}</span>
+                Result:{" "}
+                <span className="text-gray-400 font-medium">{match.result}</span>
               </p>
             </div>
           ))}
