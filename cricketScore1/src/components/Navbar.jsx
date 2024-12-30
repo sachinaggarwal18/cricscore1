@@ -27,7 +27,9 @@ const Navbar = () => {
     <div className="h-[70px] bg-gradient-to-r from-green-500 via-teal-500 to-green-400 shadow-md fixed top-0 left-0 w-full z-10">
 
       <div className="flex justify-between items-center h-full px-4">
-        <Link to="/" className="text-xl font-bold text-white">CricScore</Link>
+        <Link to="/" className="text-xl font-bold text-white">
+          <img className="h-12 w-full rounded-xl" src="../logo.png" alt="hi" />
+        </Link>
 
         {/* M, P, T div */}
         <div className="flex gap-3 font-semibold text-md">
