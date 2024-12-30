@@ -28,7 +28,7 @@ const Scorecard = () => {
   return (
     <div className="relative text-center">
       {/* Section Title with Curved Stroke */}
-      <h2 className="text-4xl font-bold relative mb-12">
+      <h1 className="text-4xl font-bold relative mb-12">
         Ongoing Matches
         <svg
           className="absolute  left-1/2 -translate-x-1/2"
@@ -45,7 +45,7 @@ const Scorecard = () => {
             fill= "none"
           />
         </svg>
-      </h2>
+      </h1>
 
       {/* Scorecard Slider */}
       <div className="m-8 mt-6 p-6 border border-teal-500 bg-opacity-80 rounded-lg shadow-lg">

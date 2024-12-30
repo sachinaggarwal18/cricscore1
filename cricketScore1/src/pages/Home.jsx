@@ -1,3 +1,4 @@
+import NewsUpdates from "../components/NewsUpdates";
 import Scorecard from "../components/Scorecard";
 import Layout from "./Layout";
 import { Typewriter } from 'react-simple-typewriter'
@@ -32,10 +33,17 @@ const Home = () => {
             </div>
           </div>
 
+          <div className="mt-10">
           {/* Scorecard Section */}
-          <div className="mt-4">
-            <Scorecard />
+            <div>
+              <Scorecard />
+            </div>
+            {/* news section  */}
+            <div>
+              <NewsUpdates/>
+            </div>
           </div>
+
         </div>
       </div>
     </Layout>

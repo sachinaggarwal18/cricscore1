@@ -83,7 +83,7 @@ const Players = ({ category }) => {
                   <div key={player.id} className="border-2 border-gray-200 shadow-lg rounded-md p-5 m-3">
                     {/* Player name and flag */}
                     <div className="flex items-center mb-4">
-                    <span className="text-2xl mr-3">{countryFlags[player.country]}</span>
+                    <span className="text-2xl mr-3">{countryCodes[player.country]}</span>
                       <h3 className="text-teal-400 text-2xl font-semibold">{player.name}
                         <span className="text-xl font-semibold">({player.team})</span> 
                       </h3>
