@@ -6,8 +6,8 @@ import Matches from "./pages/Matches";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
+<BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+<div>
         <Routes>
           <Route path="/" element={<Home />} />
 
@@ -28,6 +28,8 @@ function App() {
           <Route path="/teams/men" element={<Teams category="men"/>} />
           <Route path="/teams/women" element={<Teams category="women" />} />
           <Route path="/teams/rankings" element={<Teams category="rankings" />} />
+          <Route path="/teams/:gender/:format" element={<Teams />} />
+
         </Routes>
         
       </div>
