@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -20,19 +20,33 @@ const Login = () => {
             const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`, userData);
 
             if (response.status === 200) {
-                toast.success("Login successful! Redirecting...");
+                toast.success('🏏 Login successful! Redirecting...', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 localStorage.setItem('token', response.data.token);
                 setTimeout(() => {
                     navigate('/');
-                }, 2000); // Delay navigation to allow toast display
+                }, 1400);
             }
         } catch (err) {
             console.error("Error during login:", err);
-            if (err.response?.status === 400) {
-                toast.error(err.response.data.message || "Invalid username or password");
-            } else {
-                toast.error("An error occurred during login. Please try again.");
-            }
+            toast.error(err.response?.data?.message || "❌ An error occurred during login.", {
+                position: "top-right",
+                autoClose: 1200,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
 
         setUsername('');
