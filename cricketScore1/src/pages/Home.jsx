@@ -40,7 +40,7 @@ const Home = () => {
             </div>
             {/* news section  */}
             <div>
-              <NewsUpdates/>
+              {/* <NewsUpdates/> */}
             </div>
           </div>
 

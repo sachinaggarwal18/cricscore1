@@ -6,7 +6,7 @@ const NewsUpdates = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); 
 
-  const url = "https://cricbuzz-cricket.p.rapidapi.com/news/v1/index";
+  // const url = "https://cricbuzz-cricket.p.rapidapi.com/news/v1/index";
   const options = {
     method: "GET",
     headers: {
